@@ -108,3 +108,11 @@ In server.js set up the connection as:
     db.on('error', (error)=>console.log('ERROR: ', error))
     db.once('open', () => console.log('Database Connected'))
 
+$$ Initiate git repo and add .env and node_modules folder in .gitignore file as .env will contain sensitive info and node_modules is not needed
+
+$$ Hosting on heroku:
+After creating an account:
+    1. Create new app
+    2. Give your app a name
+    3. Follow instructions on the page
+
