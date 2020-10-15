@@ -114,5 +114,74 @@ $$ Hosting on heroku:
 After creating an account:
     1. Create new app
     2. Give your app a name
-    3. Follow instructions on the page
+    3. Follow instructions on the page 
+    Check it once again from the tutorial
 
+# tutorial 2:
+
+$$ That's how mvc works: we'll have routes as separate files and the views folder will have a folder for each route which will contain the views for that route
+
+$$ Creating routes for authors:
+    const express = require('express')
+    const router = express.Router()
+
+    // All Authors route
+    router.get('/', (req, res) => {
+        res.render('authors/index')
+    })
+
+    // New Authors route
+    router.get('/new', (req, res) => {
+        res.render('authors/new')
+    })
+
+    // Create  Author route
+    router.post('/', (req, res) => {
+        res.send('Create')
+    })
+    module.exports = router
+
+$$ creating views
+    -> just added simple text to test for now
+
+$$ create the partials now as we need to have a navbar 
+ in header.ejs
+ <header>
+    <nav>
+        <a href="/">Mybrary</a>
+        <ul>
+            <li><a href="/authors">Authors</a></li>
+            <li><a href="/authors/new">Add Author</a></li>
+        </ul>
+    </nav>
+ </header>
+
+$$ include these headers in your views now
+    <%- include('../partials/header.ejs') %>
+
+$$ create model for authors - author.js
+    const mongoose = require('mongoose')
+
+    const authorSchema = mongoose.Schema({
+        name:{
+            type: String,
+            required: true
+        }
+    })
+    // Author below is the table in our db and authorChema is the definition for it.
+    module.exports = mongoose.model('Author', authorSchema)
+
+$$ import authors model in author.js route and pass it in the route and send it to the view
+$$ edit the view for new author
+    form for new author
+    action = url at which the form goes to
+
+$$ create _forms_fields.ejs as partial in authors for both editing and creating authors
+    _ is used is to mark that it is a partial file and is not rendered by the server.
+        <label>Name</label>
+        <input type="text" name="name"><%= author.name %>
+
+$4 isntall body-parser
+    include in sever.js and also in the forms post route as the middleware
+    handle the response in the post route now in author.js
+    
