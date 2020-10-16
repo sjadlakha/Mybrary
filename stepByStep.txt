@@ -184,4 +184,31 @@ $$ create _forms_fields.ejs as partial in authors for both editing and creating 
 $4 isntall body-parser
     include in sever.js and also in the forms post route as the middleware
     handle the response in the post route now in author.js
-    
+
+$$ let's create a partial for error message and include it in the layouts view
+    <% if (locals.errorMessage != null) { %>
+    <%= errorMessage %>
+    <% } %> 
+
+$$ adding async await in the code
+    router.post('/',urlencodedParser, async (req, res) => {
+        const author = new Author({
+            name: req.body.name
+        })
+        try {
+            const newAuthor = await author.save()
+            res.redirect('authors')
+        } catch {
+            res.render('authors/new', {
+                author: author,
+                errorMessage: 'Error Creating author'
+            })
+        }
+
+    })
+
+
+$$ Displaying all the authors - edit the all authors route in author.js route
+$$ Now edit the authors/index view
+
+
