@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/author')
+const bookRouter = require('./routes/books')
 
 app.set('view engine', 'ejs');
 // create views folder
@@ -24,12 +25,16 @@ app.use(expressLayouts);
 // telling where to get all the public files like the style sheets and stuff
 // create the public folder
 app.use(express.static('public'));
+
 // Index Route:
 app.use('/', indexRouter)
 
 // Author router 
 app.use('/authors',authorRouter)
 // so '/' from authorRouter will be taken as 'authors/' and '/new' will be taken as 'authors/new'
+
+// Books Router
+app.use('/books', bookRouter)
 
 // using bodyparser
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))

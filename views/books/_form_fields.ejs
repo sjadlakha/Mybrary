@@ -1,0 +1,41 @@
+<div>
+
+    <label>Title</label>
+    <input type="text" name="title" value="<%= book.title %>">
+</div>
+
+<div>
+
+    <label>Author</label>
+    <select name="author">
+        <% authors.forEach(author => { %>
+        <% if (author.id === book.author){ %>
+        <option selected label="<%= author.name %>" value="<%= author.id %>"></option>
+        <% } else { %>
+        <option label="<%= author.name %>" value="<%= author.id %>"></option>
+        <% }}) %>
+    </select>
+</div>
+
+<div>
+
+    <label>Publish Date</label>
+    <input type="date" name="publishDate" value="<%=
+    book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0]
+    // because it is like date then time which is not correct for the mongoose data field
+    %>">
+</div>
+
+<div>
+    <label>Page count</label>
+    <input type="number" name="pageCount" min ="1" value="<%= book.pageCount%>">
+</div>
+
+<div>
+    <label>Cover</label>
+    <input type="file" name="cover">
+</div>
+<div>
+    <label>Description</label>
+    <textarea name="description" cols="30" rows="10"><%= book.description %></textarea>
+</div>

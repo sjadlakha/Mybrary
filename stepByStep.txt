@@ -211,4 +211,18 @@ $$ adding async await in the code
 $$ Displaying all the authors - edit the all authors route in author.js route
 $$ Now edit the authors/index view
 
+$$ Books :
+-> search Books
+-> Add Books
+$$ create Book model
+$$ include book routes in the server.js
+$$ add the necessary changes for the header in header.ejs
+$$ create a folfer for books views and add new and _forms_fields
+$$ handle the router for the new book route in the books.js route
 
+$$ complete new book form and handle it in the create book route
+-> For uploading the file in the file system, use multer 
+npm i multer
+multer helps us in handling multipart forms that is those that may contain files
+so in the form tag in new.js add the attribute:
+    enctype="multipart/form-data"
